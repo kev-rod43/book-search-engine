@@ -3,7 +3,7 @@ type User {
     _id: ID!
     username: String!
     email: String!
-    bookCount
+    bookCount: Int!
     savedBooks: [Book]
 }
 
