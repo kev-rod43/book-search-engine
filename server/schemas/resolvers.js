@@ -3,7 +3,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        user: async (parent, { username = null, userId }) => {
+        me: async (parent, { username = null, userId }) => {
             const user = await User.findOne({
                 $or: [{ _id: userId }, { username: username }],
             });
@@ -44,7 +44,6 @@ const resolvers = {
                 return updatedUser;
             }
             throw AuthenticationError;
-            ('You need to be logged in!');
         },
         removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
